@@ -539,14 +539,14 @@
         {
             if (base.ShouldStartIndexing(indexingOptions))
             {
-                IEvent instance = base.Locator.GetInstance<IEvent>();
+                Sitecore.Abstractions.IEvent instance = base.Locator.GetInstance<Sitecore.Abstractions.IEvent>();
                 instance.RaiseEvent("indexing:start", new object[] { this.Name, false });
                 IndexingStartedEvent event3 = new IndexingStartedEvent
                 {
                     IndexName = this.Name,
                     FullRebuild = false
                 };
-                base.Locator.GetInstance<IEventManager>().QueueEvent<IndexingStartedEvent>(event3);
+                base.Locator.GetInstance<Sitecore.Abstractions.IEventManager>().QueueEvent<IndexingStartedEvent>(event3);
                 Action<IIndexableUniqueId> body = null;
                 using (IProviderUpdateContext context = this.CreateUpdateContext())
                 {
@@ -594,7 +594,7 @@
                     IndexName = this.Name,
                     FullRebuild = false
                 };
-                base.Locator.GetInstance<IEventManager>().QueueEvent<IndexingFinishedEvent>(event4);
+                base.Locator.GetInstance<Sitecore.Abstractions.IEventManager>().QueueEvent<IndexingFinishedEvent>(event4);
             }
         }
 
